@@ -7,56 +7,42 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        //CREO LOS PAISES
-        Country argentina = new Country("Argentina","O mais grande du mundo");
-        Country venezuela =  new Country("Venezuela","El pais de la fulop");
-        Country usa = new Country("USA","no love");
-        //CREO LISTA DE PAISES DE ACUERDO
-        ArrayList<Country> agreementCountriesMercosur = new ArrayList<>();
-        ArrayList<Country> agreementCountriesNone = new ArrayList<>();
-        //CREO LA LISTA DE ACUERDOS
-        ArrayList<Agreement> agreements = new ArrayList<>();
-        //CREO TIPO DE RESIDENCIA Y LA AGREGO A ARGENTINA
-        ResidenceType residence = new ResidenceType("Permanente","vida");
-        argentina.addResidenceType(residence);
-        //CREO LOS REQUISITOS
-        Requirement requirement1 = new Requirement("Documentacion 1","traer los docuemtnos");
-        Requirement requirement2 = new Requirement("Documentacion 2","traer los docuemtnos");
-        Requirement requirement3 = new Requirement("Documentacion 3","traer los docuemtnos");
-       // CREO LA LISTA DE REQUISITOS
-        ArrayList<Requirement> reqList = new ArrayList<>();
-        reqList.add(requirement1);
-        reqList.add(requirement2);
-        reqList.add(requirement3);
-        //CREO LOS ACUERDOS
-        Agreement mercosur =  new Agreement("Mercosur","Amigos son los amigos",agreementCountriesMercosur);
-        Agreement ninguno = new Agreement("Ninguno","nada de nadie", agreementCountriesNone);
-        //CREO GRUPOS DE REQUIERIMIENTOS
-        RequirementGroup requirementGroupMercosur = new RequirementGroup(residence,mercosur,reqList);
-        argentina.addResidenceType(residence);
-        //CREO EMIGRANTE
-        Emigrant emigrant =  new Emigrant("pepe",venezuela,usa);
-        //AÑADO LOS ACUERDOS A LA LISTA
-        agreements.add(ninguno);
-        agreements.add(mercosur);
-        //AÑADO PAISES AL MERCOSUR
-        mercosur.addCountry(argentina);
-        mercosur.addCountry(venezuela);
-        //BUSCO ACUERDO PARA EMIGRANTE
-        Agreement lookedUpAgreement = findAgreement(emigrant.getOriginCountry(),emigrant.getDestinationCountry(),agreements);
-        System.out.println(lookedUpAgreement.getName());
-        getRequirementsFromGroup(residence,requirementGroupMercosur,mercosur);
+
+        Control control = new Control();
+        control.createCountry("Argentina","Sin rusia",0);
+        control.createCountry("Venezuela","Pisco",1);
+        control.createAgreement("Mercosur", "A todo o nada",0);
+        control.addCountryToAgreement(0,0);
+        control.addCountryToAgreement(0,1);
+        control.addRequirement(0,"traer dni","");
+        control.addRequirement(1,"traer antecedentes","");
+        control.addRequirement(2,"traer titulo","");
+        control.createResidenceType(0,"Permanente",90);
+        control.createResidenceType(1,"Temporal",90);
+        control.createRequirementGroup(0,0,0);
+        control.createRequirementGroup(1,0,0);
+        control.createEmigrant(0,"rodolfo");
+        control.setDestination(0);
+        control.setOrigin(1);
+        control.setResidenceType(0);
+        control.addRequirementToRG(0,0);
+        control.getEmigrantRequirement();
+
+
+        //control.printAll();
+        //control.printRg();
+
     }
 
     public static void getRequirementsFromGroup(ResidenceType residenceType, RequirementGroup requirementGroup, Agreement agreement){
-        /*TERMINAR DE DEFINIR lo que
+        for (Requirement req: requirementGroup.getRequirements()) {
 
-        ACA
-
-         */
+        }
         requirementGroup.listRequirements();
     }
+
+
+
 
 
     public static Agreement findAgreement(Country originCountry, Country destinationCountry, ArrayList<Agreement> agreements ){

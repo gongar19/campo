@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Agreement {
+    private Integer id;
     private String name;
     private String descr;
     private ArrayList<Country> countries;
 
-    public Agreement(String name, String descr, ArrayList<Country> countries) {
+    public Agreement(String name, String descr, Integer id) {
         this.name = name;
         this.descr = descr;
-        this.countries = countries;
         countries = new ArrayList<>();
+        this.id = id;
     }
 
     public String getName() {
@@ -32,8 +33,23 @@ public class Agreement {
         return countries;
     }
 
-    public void addCountry(Country country){
-        this.countries.add(country);
+    public Boolean addCountry(Country country){
+        if(!this.countries.contains(country)){
+            this.countries.add(country);
+            return true;
+        }
+        return false;
     }
 
+    public Boolean removeCountry(Country country){
+        if(this.countries.contains(country)){
+            this.countries.remove(country);
+            return true;
+        }
+        return false;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 }
