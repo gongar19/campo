@@ -31,26 +31,5 @@ public class Main {
 
         //control.printAll();
         //control.printRg();
-
-    }
-
-    public static void getRequirementsFromGroup(ResidenceType residenceType, RequirementGroup requirementGroup, Agreement agreement){
-        for (Requirement req: requirementGroup.getRequirements()) {
-
-        }
-        requirementGroup.listRequirements();
-    }
-
-
-
-
-
-    public static Agreement findAgreement(Country originCountry, Country destinationCountry, ArrayList<Agreement> agreements ){
-        for (Agreement a: agreements) {
-            if(a.getCountries().contains(originCountry) && a.getCountries().contains(destinationCountry)){
-                return a;
-            }
-        }
-        return agreements.get(0);
     }
 }
