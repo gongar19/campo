@@ -50,7 +50,7 @@ public class Main {
     }
 
     public static void getRequirementsFromGroup(ResidenceType residenceType, RequirementGroup requirementGroup, Agreement agreement){
-        /*TERMINAR DE DEFINIR
+        /*TERMINAR DE DEFINIR lo que
 
         ACA
 
